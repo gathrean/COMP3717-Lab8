@@ -1,6 +1,5 @@
 package com.example.lab8gathreandelacruz.ui.main
 
-import android.telecom.Call
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -9,20 +8,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key.Companion.Info
-import androidx.navigation.NavHost
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import java.lang.Long.toHexString
 
 data class ColorItem(val code: Long, val color: Color)
 
 enum class Screen(val route: String) {
-    HOME("home"),
-    INFO("info")
+    HOME("home")
 }
 
 
@@ -47,7 +40,7 @@ fun MainContent() {
                 selectedColor = clickedColor.value
             )
         }
-    ) {
+    ) { it ->
         // The navigation host composable, which will navigate between screens
         NavHost(
             modifier = Modifier.padding(it),
