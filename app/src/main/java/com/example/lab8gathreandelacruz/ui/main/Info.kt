@@ -14,6 +14,7 @@ import java.lang.Long.toHexString
 
 @Composable
 fun Info(code: Long?) {
+    // Column is a composable that places its children in a vertical sequence.
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
@@ -21,6 +22,7 @@ fun Info(code: Long?) {
             .fillMaxSize()
             .background(Color(code!!))
     ) {
+        // Text is a composable that renders text on the screen.
         Text(text = toHexString(code), fontSize = 30.sp)
     }
 }

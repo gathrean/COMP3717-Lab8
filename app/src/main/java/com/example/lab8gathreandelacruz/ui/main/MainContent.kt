@@ -21,7 +21,6 @@ enum class Screen(val route: String) {
 
 // Have to add implementation("androidx.navigation:navigation-compose:2.7.5") to build.gradle.kts dependencies
 // for this to work
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainContent() {

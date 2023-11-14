@@ -15,10 +15,15 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyTopBar(navController: NavController, selectedColor: ColorItem?) {
+    // This is the top app bar of the Colors screen
     CenterAlignedTopAppBar(
+
+        // The title of the top app bar
         title = {
             Text(text = "Colors", fontSize = 30.sp)
         },
+
+        // The navigation icon of the top app bar
         navigationIcon = {
             IconButton(onClick = {
                 navController.navigate("home")
@@ -29,6 +34,8 @@ fun MyTopBar(navController: NavController, selectedColor: ColorItem?) {
                 )
             }
         },
+
+        // The actions of the top app bar
         actions = {
             selectedColor?.let {
                 Icon(

@@ -24,6 +24,9 @@ import androidx.navigation.NavController
 @Composable
 fun Home(navController: NavController, clickedColor: MutableState<ColorItem?>) {
 
+    // List of ColorItems
+    // Colors posted on Learning Hub
+    // ColorItem is a data class that has two properties: code and color
     val list = listOf(
         ColorItem(0xFFF44336, Color(0xFFF44336)),
         ColorItem(0xFFF44336, Color(0xFFF44336)),
@@ -35,10 +38,13 @@ fun Home(navController: NavController, clickedColor: MutableState<ColorItem?>) {
         ColorItem(0xFFFFEB3B, Color(0xFFFFEB3B)),
     )
 
+    // Convert list to mutable state list
     val stateList = remember {
         list.toMutableStateList()
     }
 
+    // LazyColumn is a vertically scrolling list that only composes
+    // and lays out the currently visible items.
     LazyColumn(content = {
         items(stateList.size) {
             ColorRow(color = stateList[it], navController, clickedColor)
@@ -52,21 +58,22 @@ fun ColorRow(
     navController: NavController,
     clickedColor: MutableState<ColorItem?>
 ) {
+    // Row is a composable that places its children in a horizontal sequence.
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(12.dp)
-        .clickable {
-            clickedColor.value = color
-        }
+        .clickable { clickedColor.value = color }
         .background(color.color)
         .height(100.dp),
         horizontalArrangement = Arrangement.End
     ) {
+        // IconButton is a composable that is a button with an icon.
         IconButton(
             onClick = {
                 navController.navigate("info/${color.code}")
             }
         ) {
+            // Icon is a composable that displays a vector graphic
             Icon(
                 Icons.Outlined.Info,
                 contentDescription = null
